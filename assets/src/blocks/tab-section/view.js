@@ -69,7 +69,10 @@ const TabSections = {
 	}
 };
 
-
-wp.domReady( () => {
-	TabSections.init();
-} );
+(
+	() => {
+		document.addEventListener( 'DOMContentLoaded', () => {
+			TabSections.init();
+		} );
+	}
+)();

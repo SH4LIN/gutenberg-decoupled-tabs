@@ -52,6 +52,16 @@ function autoloader( $resource = '' ) {
 				$file_name = sprintf( 'trait-%s', trim( strtolower( $path[2] ) ) );
 				break;
 
+			case 'blocks':
+				/**
+				 * If there is class name provided for specific directory then load that.
+				 * otherwise find in inc/ directory.
+				 */
+				if ( ! empty( $path[2] ) ) {
+					$directory = sprintf( 'classes/%s', $path[1] );
+					$file_name = sprintf( 'class-%s', trim( strtolower( $path[2] ) ) );
+					break;
+				}
 			default:
 				$directory = 'classes';
 				$file_name = sprintf( 'class-%s', trim( strtolower( $path[1] ) ) );

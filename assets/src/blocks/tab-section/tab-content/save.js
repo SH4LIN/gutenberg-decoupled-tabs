@@ -15,6 +15,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  */
 export default function save( { attributes } ) {
 	const { tabContentId } = attributes;
+
 	const blockProps = useBlockProps.save(
 		{
 			'data-tab-content-id': tabContentId,

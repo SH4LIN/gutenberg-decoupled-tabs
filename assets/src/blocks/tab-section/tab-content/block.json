@@ -5,7 +5,7 @@
 	"version": "1.0.0",
 	"title": "Tab Content",
 	"category": "theme",
-	"icon": "smiley",
+	"icon": "welcome-write-blog",
 	"description": "Tab content block",
 	"parent": ["decoupled-tabs/tab-section"],
 	"supports": {
@@ -33,6 +33,7 @@
 			"default": true
 		}
 	},
+	"usesContext": ["decoupledTabs/tabSection/defaultTabSection"],
 	"example": {},
 	"textdomain": "decoupled-tabs",
 	"editorScript": "file:./index.js",

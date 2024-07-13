@@ -5,7 +5,7 @@
 	"version": "1.0.0",
 	"title": "Tab Section",
 	"category": "theme",
-	"icon": "smiley",
+	"icon": "welcome-add-page",
 	"description": "Tab Section Block",
 	"supports": {
 		"html": false,
@@ -27,6 +27,9 @@
 			"type": "string",
 			"default": ""
 		}
+	},
+	"providesContext": {
+		"decoupledTabs/tabSection/defaultTabSection": "defaultTabSection"
 	},
 	"example": {},
 	"textdomain": "decoupled-tabs",
