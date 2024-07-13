@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "decoupled-tabs/tab-content",
+	"version": "1.0.0",
+	"title": "Tab Content",
+	"category": "theme",
+	"icon": "welcome-write-blog",
+	"description": "Tab content block",
+	"parent": ["decoupled-tabs/tab-section"],
+	"supports": {
+		"html": false,
+		"inserter": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": true,
+			"link": true,
+			"text": true,
+			"gradients": true
+		},
+		"layout": true
+	},
+	"attributes": {
+		"tabContentId": {
+			"type": "string"
+		},
+		"visible": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"usesContext": ["decoupledTabs/tabSection/defaultTabSection"],
+	"example": {},
+	"textdomain": "decoupled-tabs",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

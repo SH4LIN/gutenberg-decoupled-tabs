@@ -22,9 +22,6 @@ Thumbs.db
 # Enviroment
 .env
 
-# Build
-assets/build/
-
 # Cache
 .phpunit.result.cache
 

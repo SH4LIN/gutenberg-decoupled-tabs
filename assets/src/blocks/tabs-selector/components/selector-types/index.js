@@ -17,16 +17,16 @@ const TypeSelectorBlockControl = ( { type, setAttributes } ) => {
 	const selectorTypes = [
 		{
 			key: 'drop-down',
-			label: __( 'Drop Down', 'caris-features' ),
+			label: __( 'Drop Down', 'decoupled-tabs' ),
 		},
 		{
 			key: 'list',
-			label: __( 'List', 'caris-features' ),
+			label: __( 'List', 'decoupled-tabs' ),
 		},
 	];
 
 	return (
-		<DropdownMenu label={ __( 'Selector type', 'caris-features' ) }>
+		<DropdownMenu label={ __( 'Selector type', 'decoupled-tabs' ) }>
 			{ ( { onClose } ) => (
 				<MenuGroup>
 					{ selectorTypes.map( ( selectorType ) => {

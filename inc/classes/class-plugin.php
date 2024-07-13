@@ -7,6 +7,7 @@
 
 namespace DecoupledTabs\Inc;
 
+use DecoupledTabs\Inc\Blocks\Tab_Content;
 use DecoupledTabs\Inc\Traits\Singleton;
 
 /**
@@ -31,6 +32,13 @@ class Plugin {
 	function register_blocks() {
 
 		register_block_type_from_metadata( sprintf( '%s/blocks/tabs-selector', DECOUPLED_TABS_BUILD_PATH ) );
+		register_block_type_from_metadata( sprintf( '%s/blocks/tab-section', DECOUPLED_TABS_BUILD_PATH ) );
+		register_block_type_from_metadata(
+			sprintf( '%s/blocks/tab-section/tab-content', DECOUPLED_TABS_BUILD_PATH ),
+			array(
+				'render_callback' => array( Tab_Content::get_instance(), 'render' ),
+			)
+		);
 
 	}
 }

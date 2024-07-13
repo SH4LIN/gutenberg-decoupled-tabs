@@ -27,8 +27,8 @@ require_once DECOUPLED_TABS_PATH . '/inc/helpers/autoloader.php';
  *
  * @return void
  */
-function caris_features_plugin_loader() {
+function decoupled_tabs_plugin_loader() {
 	\DecoupledTabs\Inc\Plugin::get_instance();
 }
 
-caris_features_plugin_loader();
+decoupled_tabs_plugin_loader();

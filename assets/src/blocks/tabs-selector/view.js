@@ -1,7 +1,6 @@
 /**
- * Region selector view script.
+ * Tabs selector view script.
  */
-
 const TabsSelector = {
 
 	/**
@@ -13,30 +12,28 @@ const TabsSelector = {
 		this.handleDropDown = this.handleDropDown.bind( this );
 		this.handleList = this.handleList.bind( this );
 
-		const tabsSelector = document.querySelector( '.wp-block-decoupled-tabs-tabs-selector' );
+		this.tabsSelector = document.querySelector( '.wp-block-decoupled-tabs-tabs-selector' );
 
-		if ( ! tabsSelector ) {
+		if ( ! this.tabsSelector ) {
 			return;
 		}
 
-		const selectorType = tabsSelector?.dataset?.selectorType || 'drop-down';
+		const selectorType = this.tabsSelector?.dataset?.selectorType || 'drop-down';
 
 		if ( 'drop-down' === selectorType ) {
-			this.handleDropDown( tabsSelector );
+			this.handleDropDown();
 		} else {
-			this.handleList( tabsSelector );
+			this.handleList();
 		}
 	},
 
 	/**
 	 * Handle Drop Down tabs selector.
 	 *
-	 * @param {HTMLElement} tabsSelector - Tab selector element.
-	 *
 	 * @return {void}
 	 */
-	handleDropDown( tabsSelector ) {
-		const tabsSelectorControl = tabsSelector.querySelector( '#region-selector-control' );
+	handleDropDown() {
+		const tabsSelectorControl = this.tabsSelector.querySelector( '#tabs-selector' );
 
 		if ( ! tabsSelectorControl ) {
 			return;
@@ -50,19 +47,17 @@ const TabsSelector = {
 				},
 			} );
 
-			tabsSelector.dispatchEvent( customEvent );
+			this.tabsSelector.dispatchEvent( customEvent );
 		} );
 	},
 
 	/**
 	 * Handle List tab selector.
 	 *
-	 * @param {HTMLElement} tabsSelector - Tab selector element.
-	 *
 	 * @return {void}
 	 */
-	handleList( tabsSelector ) {
-		const tabList = tabsSelector.querySelector( '.tabs-selector-list' );
+	handleList() {
+		const tabList = this.tabsSelector.querySelector( '.tabs-selector-list' );
 
 		if ( ! tabList ) {
 			return;
@@ -74,21 +69,25 @@ const TabsSelector = {
 			return;
 		}
 
-		tabButtons.forEach( ( regionButton ) => {
-			regionButton.addEventListener( 'click', () => {
+		tabButtons.forEach( ( tabButton ) => {
+			tabButton.addEventListener( 'click', () => {
 				// Creating custom event so all other component can listen to this event
 				const customEvent = new CustomEvent( 'tabChange', {
 					detail: {
-						value: regionButton.dataset.tabId,
+						value: tabButton.dataset.tabId,
 					},
 				} );
 
-				tabsSelector.dispatchEvent( customEvent );
+				this.tabsSelector.dispatchEvent( customEvent );
 			} );
 		} );
 	},
 };
 
-wp.domReady( () => {
-	TabsSelector.init();
-} );
+(
+	() => {
+		document.addEventListener( 'DOMContentLoaded', () => {
+			TabsSelector.init();
+		} );
+	}
+)();
