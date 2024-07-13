@@ -48,7 +48,7 @@ const TabsSelectorDropDown = ( { attributes, setAttributes } ) => {
 				value={ dropDownLabel }
 				isSelected={ true }
 				onChange={ onLabelChange }
-				placeholder={ __( 'Label', 'caris-features' ) } />
+				placeholder={ __( 'Label', 'decoupled-tabs' ) } />
 
 			<div className="tabs-selector-wrapper">
 				<select

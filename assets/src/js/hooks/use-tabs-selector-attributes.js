@@ -5,14 +5,14 @@ import { useSelect } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 
 /**
- * Dynamic section selector attributes hook
+ * Tabs selector attributes hook
  *
  * @param {string} clientId - Block client id
  * @param {Array}  deps     - Dependencies
  *
  * @return {Object} Block attributes
  */
-const useDynamicSectionSelectorAttributes = ( clientId, deps ) => {
+const useTabsSelectorAttributes = ( clientId, deps ) => {
 	return useSelect(
 		( select ) => {
 			return select( blockEditorStore ).getBlockAttributes( clientId );
@@ -21,4 +21,4 @@ const useDynamicSectionSelectorAttributes = ( clientId, deps ) => {
 	);
 };
 
-export default useDynamicSectionSelectorAttributes;
+export default useTabsSelectorAttributes;

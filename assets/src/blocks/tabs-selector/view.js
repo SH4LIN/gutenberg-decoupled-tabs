@@ -1,5 +1,5 @@
 /**
- * Region selector view script.
+ * Tabs selector view script.
  */
 
 const TabsSelector = {
@@ -36,7 +36,7 @@ const TabsSelector = {
 	 * @return {void}
 	 */
 	handleDropDown( tabsSelector ) {
-		const tabsSelectorControl = tabsSelector.querySelector( '#region-selector-control' );
+		const tabsSelectorControl = tabsSelector.querySelector( '#tabs-selector' );
 
 		if ( ! tabsSelectorControl ) {
 			return;
@@ -74,12 +74,12 @@ const TabsSelector = {
 			return;
 		}
 
-		tabButtons.forEach( ( regionButton ) => {
-			regionButton.addEventListener( 'click', () => {
+		tabButtons.forEach( ( tabButton ) => {
+			tabButton.addEventListener( 'click', () => {
 				// Creating custom event so all other component can listen to this event
 				const customEvent = new CustomEvent( 'tabChange', {
 					detail: {
-						value: regionButton.dataset.tabId,
+						value: tabButton.dataset.tabId,
 					},
 				} );
 
