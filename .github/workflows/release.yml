@@ -1,0 +1,58 @@
+name: Build and Deploy Plugin
+
+on:
+  push:
+    tags:
+      - 'v*' # This triggers the action when a tag starting with 'v' is pushed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Remove src directory
+        run: rm -rf assets/src
+
+      - name: Archive files
+        run: zip -r plugin.zip . -x "node_modules/*" "assets/src/*" ".git/*" ".github/*" ".browserslistrc" ".editorconfig" ".eslintignore" ".eslintrc" ".gitignore" ".npmrc" ".nvmrc" ".stylelintignore" ".stylelintrc.json" "package.json" "package-lock.json" "README.md" "webpack.config.js" "babel.config.js"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: plugin
+          path: plugin.zip
+
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./plugin.zip
+          asset_name: plugin.zip
+          asset_content_type: application/zip
