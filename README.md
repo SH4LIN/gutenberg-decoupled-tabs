@@ -5,7 +5,7 @@ Decoupled Tabs is a WordPress plugin that provides a block to create tabs in the
 For example, There is a drop-down selector at the top of the page and you want to show different content based on the selection. You can create tabs for each selection and add the content of that tab at different places on the page.
 
 ## How block works
-[![Watch the video]](https://raw.githubusercontent.com/SH4LIN/gutenberg-decoupled-tabs/main/docs/readme/block-editorial-experience.mov)
+https://github.com/user-attachments/assets/ee2e63a4-3174-4ce6-877a-b858c941e469
 
 ## Get Started
 ### Plugin Setup
